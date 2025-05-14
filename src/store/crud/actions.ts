@@ -1,3 +1,4 @@
+import type { InventoryItem } from "../../interfaces/interface.inventory";
 import {
   GET_REQUEST,
   GET_SUCCESS,
@@ -18,7 +19,7 @@ export const getRequest = (url: string) => ({
   url
 });
 
-export const getSuccess = (data: object) => ({
+export const getSuccess = (data: InventoryItem[]) => ({
   type: GET_SUCCESS,
   data
 });

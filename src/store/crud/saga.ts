@@ -10,8 +10,7 @@ function* getSaga(action: { type: string; url: string }): Generator<any, void> {
     const response = yield publicGet(action.url);
     if (response.status === 200) {
       const data = response.data;
-      console.log('Data: ', data);
-      yield put(getSuccess(data?.data));
+      yield put(getSuccess(data));
     }
   } catch (error) {
     if (error instanceof AxiosError) {

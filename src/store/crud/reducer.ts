@@ -16,21 +16,20 @@ import {
 const initialState = {
   loading: false,
   error: null,
-  data: null
+  data: []
 };
 
-export default function crudReducer(state = initialState, action: { type: string, payload?: any }): typeof initialState {
+export default function crudReducer(state = initialState, action: { type: string, payload?: any, data: any }): typeof initialState {
   switch (action.type) {
     case GET_REQUEST:
     case POST_REQUEST:
     case PUT_REQUEST:
     case DELETE_REQUEST:
-      return { ...state, loading: true, error: null, data: null };
+      console.log(action);
+      return { ...state, loading: true, error: null, data: [] };
     case GET_SUCCESS:
-    case POST_SUCCESS:
-    case PUT_SUCCESS:
-    case DELETE_SUCCESS:
-      return { ...state, loading: false, error: null, data: action.payload };
+      console.log('Action Logs: ', action);
+      return { ...state, loading: false, error: null, data: action.data };
     case GET_FAILURE:
     case POST_FAILURE:
     case PUT_FAILURE:
